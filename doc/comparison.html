@@ -3,7 +3,7 @@
 
 <style> 
   table,th,td { border:2px solid green; } 
-  table { border-collapse:collapse; width:20%; } 
+  table { border-collapse:collapse; width:90%; } 
   td { height:30px; } 
   tbody tr:nth-child(even) { background: lightgrey; } </style>
 
@@ -41,7 +41,7 @@
 
 
 <tr>
-  <td> importing the class</td>
+  <td> import the class</td>
   <td>  use Udapi::Core::Document; </td>
   <td>  import Document from udapi.core.document  </td>
   <td>  import cz.ufal.udapi.core.impl.DefaultDocument;<br/>
@@ -57,7 +57,7 @@
 </tr>
 
 <tr>
-  <td> &bull; loading a document from a file </td>
+  <td> &bull; load a document from a file DIFF</td>
   <td>  $doc->load_conllu('test.conllu') </td>
   <td>  doc.load({'filename':'test.conllu'}) <br/>
   doc.load({'filehandle': fh}) </td>
@@ -66,7 +66,7 @@
 
 
 <tr>
-  <td> &bull; saving a document to a file </td>
+  <td> &bull; save a document to a file DIFF</td>
   <td>  $doc->save_conllu('test.conllu') </td>
   <td>  doc.store({'filename':'test.conllu'})<br/>
   doc.store({'filehandle': fh})
@@ -78,21 +78,26 @@
 
 <tr>
   <td> &bull; get all bundles in the document</td>
-  <td>  $doc->bundles </td>
-  <td>  doc.bundles<br/>
+  <td>  my @buns = $doc->bundles </td>
+  <td>  buns = doc.bundles # list version<br/>
         for bundle in doc: # iterator version
   </td>
-  <td>  doc.getBundles() </td>
+  <td>  List&lt;Bundle&gt; = doc.getBundles() </td>
 </tr>
 
 <tr>
-  <td> &bull; append a new bundle to the end of the document </td>
-  <td>  $doc->create_bundle($args_hash_ref???) </td>
-  <td>  doc.create_bundle())  </td>
-  <td>  doc.addBundle(); </td>
+  <td> &bull; create a new bundle and append it to the end of the document </td>
+  <td>  my $bun = $doc->create_bundle() </td>
+  <td>  bun = doc.create_bundle() </td>
+  <td>  Bundle bun = doc.addBundle(); DIFF</td>
 </tr>
 
-
+<tr>
+  <td> &bull; delete document (free memory) </td>
+  <td>  $doc->destroy() </td>
+  <td>  # not needed </td>
+  <td>  // not needed </td>
+</tr>
 
 
 
@@ -103,7 +108,7 @@
 </tr>
 
 <tr>
-  <td> importing the class </td>
+  <td> import the class </td>
   <td>  use Udapi::Core::Bundle; </td>
   <td>  import Bundle from udapi.core.document  </td>
   <td>  import cz.ufal.udapi.core.Bundle;<br/>
@@ -120,28 +125,53 @@
 
 <tr>
   <td> &bull; get all trees contained in the bundle </td>
-  <td>  my @tree_roots = $bun->trees() </td>
-  <td>  trees = bun.trees <br/>
-        for tree in bun:  # iterator version
-  </td>
+  <td>  my @trees = $bun->trees </td>
+  <td>  trees = bun.trees # list version<br/>
+        for tree in bun:  # iterator version</td>
   <td>  List&lt;Root&gt; trees = bun.getTrees(); </td>
 </tr>
 
 <tr>
-  <td> &bull; add a new tree to the bundle </td>
-  <td>  my $root = bun->create_tree() </td>
-  <td>  bun.trees.append(root)  </td>
-  <td>  bun.addTree(); </td>
+  <td> &bull; get the tree with a given zone </td>
+  <td>  my $root = $bun->get_tree($zone) </td>
+  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  <span style="color:red">MISSING</span> </td>
 </tr>
 
+<tr>
+  <td> &bull; create a new tree in the bundle </td>
+  <td>  my $root = $bun->create_tree($zone) </td>
+  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  bun.addTree(); DIFF</td>
+</tr>
+
+<tr>
+  <td> &bull; add an existing tree to the bundle DIFF</td>
+  <td>  $bun->add_tree($root) </td>
+  <td>  bun.trees.append(root)  </td>
+  <td>  <span style="color:red">MISSING</span> </td>
+</tr>
 
 <tr>
   <td> &bull; document in which the bundle is contained </td>
-  <td>  $node->document(); </td>
-  <td>  node.document  </td>
-  <td>  node.getDocument(); </td>
+  <td>  $bun->document </td>
+  <td>  bun.document </td>
+  <td>  bun.getDocument(); </td>
 </tr>
 
+<tr>
+  <td> &bull; get id of the bundle (any string)</td>
+  <td>  my $id = $bun->id </td>
+  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  <span style="color:red">MISSING</span> </td>
+</tr>
+
+<tr>
+  <td> &bull; get 1-based index of the bundle within document DIFF</td>
+  <td>  my $index = $bun->number </td>
+  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  int index = bun.getId() </td>
+</tr>
 
 <!--************* NODE *************-->
 
@@ -150,7 +180,7 @@
 </tr>
 
 <tr>
-  <td> importing the class </td>
+  <td> import the class </td>
   <td>  use Udapi::Core::Node; </td>
   <td>  import Node from udapi.core.node  </td>
   <td>  import cz.ufal.udapi.core.Node;<br/>
@@ -166,52 +196,108 @@
 </tr>
 
 <tr>
-  <td> &bull; getting an attribute value </td>
-  <td>  $node->lemma; </td>
-  <td>  node.lemma  </td>
-  <td>  node.getLemma(); </td>
+  <td> &bull; get an attribute value </td>
+  <td>  my $lemma = $node->lemma </td>
+  <td>  lemma = node.lemma  </td>
+  <td>  String lemma = node.getLemma(); </td>
 </tr>
 
 <tr>
-  <td> &bull; writing an attribute value </td>
-  <td>  $node->lemma; </td>
-  <td>  node.lemma  </td>
+  <td> &bull; write an attribute value </td>
+  <td>  $node->set_lemma($lemma); </td>
+  <td>  node.lemma = lemma </td>
   <td>  node.setLemma(lemma); </td>
 </tr>
 
 <tr>
-  <td> &bull; getting the node's parent </td>
-  <td>  $node->parent; </td>
-  <td>  node.parent  </td>
-  <td>  node.getParent(); </td>
+  <td> &bull; get the node's parent </td>
+  <td>  my $parent = $node->parent </td>
+  <td>  parent = node.parent  </td>
+  <td>  Optional&lt;Node&gt; parent = node.getParent(); </td>
 </tr>
 
 <tr>
-  <td> &bull; setting the node's parent </td>
-  <td>  $node->set_parent($new_parent); </td>
+  <td> &bull; set the node's parent </td>
+  <td>  $node->set_parent($new_parent) </td>
   <td>  node.set_parent(new_parent)  </td>
   <td>  node.setParent(newParent); </td>
 </tr>
 
 <tr>
-  <td> &bull; creating a node </td>
-  <td>  my $child = $node->create_child(); </td>
-  <td>  node.????  </td>
+  <td> &bull; create a node (as the last node in the whole tree) </td>
+  <td>  my $child = $node->create_child() </td>
+  <td>  <span style="color:red">MISSING</span>  </td>
   <td>  Node child = node.createChild(); </td>
 </tr>
 
 <tr>
-  <td> &bull; removing a node </td>
-  <td>  $node->remove(); </td>
-  <td>  node.remove  </td>
+  <td> &bull; remove a node (delete it and all its descendants) </td>
+  <td>  $node->remove() </td>
+  <td>  node.remove()  </td>
   <td>  node.remove(); </td>
 </tr>
 
 <tr>
-  <td> &bull; getting all node's descendants </td>
-  <td>  $node->descendants(); </td>
-  <td>  node.descendants()  </td>
-  <td>  node.getDescendants(); </td>
+  <td> &bull; get node's descendants (sorted by ord) </td>
+  <td>  my @nodes = $node->descendants() </td>
+  <td>  nodes = node.descendants()  </td>
+  <td>  List&lt;Node&gt; nodes = node.getDescendants(); </td>
+</tr>
+
+<tr>
+  <td> &bull; get all node's children (sorted by ord) </td>
+  <td>  my @nodes = $node->children() </td>
+  <td>  nodes = node.children()  </td>
+  <td>  List&lt;Node&gt; nodes = node.getChildren(); </td>
+</tr>
+
+<tr>
+  <td> &bull; get left (=preceding) descendants including the node itself </td>
+  <td>  my @nodes = $node->descendants({left_only=>1, add_self=>1}) </td>
+  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  List&lt;Node&gt; nodes = node.getDescendants(EnumSet.of(Node.DescendantsArg.ADD_SELF, <span style="color:red">Node.DescendantsArg.LEFT_ONLY</span>)); </td>
+</tr>
+
+<tr>
+  <td> &bull; get the last child or the node itself </td>
+  <td>  my $node = $node->children({last_only=>1, add_self=>1}) </td>
+  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  List&lt;Node&gt; node<span style="color:red">s</span> = node.getChildren(EnumSet.of(Node.ChildrenArg.ADD_SELF, Node.ChildrenArg.LAST_ONLY)); </td>
+</tr>
+
+<tr>
+  <td> &bull; shift (=reorder) a node (with its whole subtree) after a target node</td>
+  <td>  $node->shift_after_node($target) </td>
+  <td>  node.shift(target, after=1, move_subtree=1, reference_subtree=0) DIFF </td>
+  <td>  node.shiftAfterNode(target); </td>
+</tr>
+
+<tr>
+  <td> &bull; shift a node without its subtree before a target node's subtree</td>
+  <td>  $node->shift_before_subtree($target, {without_children=>1}) </td>
+  <td>  node.shift(target, after=0, move_subtree=0, reference_subtree=1) DIFF </td>
+  <td>  node.shiftBeforeSubtree(target, EnumSet.of(Node.ShiftArg.WITHOUT_CHILDREN); </td>
+</tr>
+
+<tr>
+  <td> &bull; Is the given node a descendant (transitive child) of a given target node</td>
+  <td>  my $bool = $node->is_descendant_of($target) </td>
+  <td>  bool = node.is_descendant_of(target) </td>
+  <td>  boolean bool = node.isDescendantOf(target); </td>
+</tr>
+
+<tr>
+  <td> &bull; get full id of the node (root_address # node_id)</td>
+  <td>  my $address = $node->address </td>
+  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  <span style="color:red">MISSING</span> </td>
+</tr>
+
+<tr>
+  <td> other methods</td>
+  <td>  zone, bundle, root, document, is_root, next_node, prev_node, precedes($another_node), get_attrs(@names) </td>
+  <td>  </td>
+  <td>  </td>
 </tr>
 
 <!--************* ROOT *************-->
@@ -221,7 +307,7 @@
 </tr>
 
 <tr>
-  <td> importing the class </td>
+  <td> import the class </td>
   <td>  use Udapi::Core::Node::Root; </td>
   <td>  import Rode from udapi.core.node  </td>
   <td>  import cz.ufal.udapi.core.Root;
@@ -230,20 +316,45 @@
 
 <tr>
   <td> &bull; get the bundle in which the tree is located </td>
-  <td>  $node->bundle; </td>
-  <td>  node.bundle  </td>
-  <td>  node.getBundle(); </td>
+  <td>  my $bun = $root->bundle </td>
+  <td>  bun = root.bundle  </td>
+  <td>  Bundle bun = root.getBundle(); </td>
 </tr>
 
 <tr>
   <td> &bull; remove the whole tree from the bundle </td>
-  <td>  $node->??? </td>
-  <td>  node.remove()  </td>
-  <td>  node.remove(); </td>
+  <td>  $root->remove() </td>
+  <td>  root.remove()  </td>
+  <td>  root.remove(); </td>
 </tr>
 
+<tr>
+  <td> &bull; get sentence string (if stored) </td>
+  <td>  my $sen = $root->sentence </td>
+  <td>  <span style="color:red">MISSING</span>  </td>
+  <td>  String sen = root.getSentence(); </td>
+</tr>
 
+<tr>
+  <td> &bull; get zone of the tree </td>
+  <td>  my $zone = $root->zone </td>
+  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  <span style="color:red">MISSING</span> </td>
+</tr>
 
+<tr>
+  <td> &bull; set zone of the tree </td>
+  <td>  $root->set_zone($zone) </td>
+  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  <span style="color:red">MISSING</span> </td>
+</tr>
+
+<tr>
+  <td> all methods of Node </td>
+  <td>  # yes, except shift_* methods</td>
+  <td>  <span style="color:red">???</span> </td>
+  <td>  <span style="color:red">???</span> </td>
+</tr>
 
 
 <!--************* PROCESSING CLASSES *************-->
@@ -263,9 +374,7 @@
   <td> <b>BLOCK:</b> <br/> basic processing unit </td>
   <td>  use Udapi::Core::Block; </td>
   <td>  import Block from udapi.core.block  </td>
-  <td>  import cz.ufal.udapi.core.Block;<br/>
-    import cz.ufal.udapi.block.Dummy;
-  </td>
+  <td>  import cz.ufal.udapi.core.Block;  </td>
 </tr>
 
 
@@ -278,8 +387,7 @@
 
 
 <tr>
-  <td> <b>RUNNER:</b> <br/> more complex processing unit, typically a
-  sequence of blocks </td>
+  <td> <b>RUNNER:</b> (support for the command-line execution) </td>
   <td>  use Udapi::Core::Run; </td>
   <td>  import Run from udapi.core.run  </td>
   <td>  import cz.ufal.udapi.core.Run </td>
@@ -302,24 +410,35 @@
 </tr>
 
 <tr>
-  <td> Bash </td>
+  <td> Util::Eval </td>
+  <td> cat in.conllu | udapi.pl Read::CoNLLU Util::Eval node='say $.lemma'</td>
+  <td> <span style="color:red">MISSING</span> </td>
+  <td> <span style="color:red">???</span> </td>
+</tr>
+
+
+
+
+<tr>
+  <td> conllu to txt (Bash) </td>
+  <td> cat in.conllu | udapi.pl Read::CoNLLU Write::TextModeTrees > out.txt</td>
   <td>  </td>
-  <td>  </td>
-  <td>
-    cat ../data/UD_Czech/cs-ud-dev.conllu | ./bin/udapi.groovy Read::CoNLLU Write::TextModeTrees </td>
+  <td> cat in.conllu | udapi.groovy Read::CoNLLU Write::TextModeTrees > out.txt </td>
 </tr>
 
 <tr>
-  <td> PowerShell </td>
+  <td> conllu to txt (PowerShell) </td>
   <td>  </td>
   <td>  </td>
   <td>
     Use Lucida Sans Unicode in Powershell ISE<br/>
     <pre>
-    cmd.exe /c
-    echo [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-    $OutputEncoding = New-Object -typename System.Text.UTF8Encoding
-    Get-Content -encoding utf8 ..\data\UD_Czech\cs-ud-dev.conllu | out-string | groovy .\bin\udapi.groovy Read::CoNLLU Write::TextModeTrees</pre> </td>
+cmd.exe /c
+echo [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = New-Object -typename System.Text.UTF8Encoding
+Get-Content -encoding utf8 in.conllu | out-string |
+  groovy .\bin\udapi.groovy
+  Read::CoNLLU Write::TextModeTrees</pre> </td>
 </tr>
 
 </table>
