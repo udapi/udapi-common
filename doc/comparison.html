@@ -124,7 +124,7 @@
   <td>  trees = bun.trees <br/>
         for tree in bun:  # iterator version
   </td>
-  <td>  List&lt;NLPTree&gt; trees = bun.getTrees(); </td>
+  <td>  List&lt;Root&gt; trees = bun.getTrees(); </td>
 </tr>
 
 <tr>
@@ -139,7 +139,7 @@
   <td> &bull; document in which the bundle is contained </td>
   <td>  $node->document(); </td>
   <td>  node.document  </td>
-  <td>  node.???(); </td>
+  <td>  node.getDocument(); </td>
 </tr>
 
 
@@ -224,7 +224,7 @@
   <td> importing the class </td>
   <td>  use Udapi::Core::Node::Root; </td>
   <td>  import Rode from udapi.core.node  </td>
-  <td>  ???
+  <td>  import cz.ufal.udapi.core.Root;
   </td>
 </tr>
 
@@ -232,14 +232,14 @@
   <td> &bull; get the bundle in which the tree is located </td>
   <td>  $node->bundle; </td>
   <td>  node.bundle  </td>
-  <td>  node.???; </td>
+  <td>  node.getBundle(); </td>
 </tr>
 
 <tr>
   <td> &bull; remove the whole tree from the bundle </td>
   <td>  $node->??? </td>
   <td>  node.remove()  </td>
-  <td>  node.???; </td>
+  <td>  node.remove(); </td>
 </tr>
 
 
