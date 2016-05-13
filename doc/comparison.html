@@ -134,6 +134,17 @@
   <td>  bun.addTree(); </td>
 </tr>
 
+
+<tr>
+  <td> &bull; document in which the bundle is contained </td>
+  <td>  $node->document(); </td>
+  <td>  node.document  </td>
+  <td>  node.???(); </td>
+</tr>
+
+
+<!---------------------- NODE ------------------------------>
+
 <tr>
   <td colspan=4 bgcolor='lightgreen'> NODE </td>
 </tr>
@@ -203,6 +214,7 @@
   <td>  node.getDescendants(); </td>
 </tr>
 
+<!---------------------- ROOT ------------------------------>
 
 <tr>
   <td colspan=4 bgcolor='lightgreen'> ROOT </td>
@@ -210,7 +222,7 @@
 
 <tr>
   <td> importing the class </td>
-  <td>  use Udapi::Core::Root; </td>
+  <td>  use Udapi::Core::Node::Root; </td>
   <td>  import Rode from udapi.core.node  </td>
   <td>  ???
   </td>
@@ -220,6 +232,13 @@
   <td> &bull; get the bundle in which the tree is located </td>
   <td>  $node->bundle; </td>
   <td>  node.bundle  </td>
+  <td>  node.???; </td>
+</tr>
+
+<tr>
+  <td> &bull; remove the whole tree from the bundle </td>
+  <td>  $node->??? </td>
+  <td>  node.remove()  </td>
   <td>  node.???; </td>
 </tr>
 
