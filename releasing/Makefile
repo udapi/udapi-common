@@ -17,8 +17,14 @@ doc:    perldoc pydoc javadoc
 
 pydoc:
 	mkdir -p $(OUTDIR)/doc/python
-	export PYTHONPATH=udapi-python/:$PYTHONPATH && pydoc -w udapi.core.node.Node
-	mv udapi.core.node.Node.html $(OUTDIR)/doc/python
+	pydoc -w udapi.core.node.Node
+	pydoc -w udapi.core.node.Root
+	pydoc -w udapi.core.node.Bundle
+	pydoc -w udapi.core.node.Document
+	pydoc -w udapi.core.node.Block
+	pydoc -w udapi.core.node.Run
+
+	mv udapi.core.node.*.html $(OUTDIR)/doc/python
 
 tgz:
 	tar -czf $(OUTDIR).tgz $(OUTDIR)
