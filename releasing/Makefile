@@ -1,6 +1,7 @@
 VERSION = 0.1.1111
 
 OUTDIR = Udapi-$(VERSION)
+JAVADIR = udapi-java
 
 all: clone doc
 
@@ -25,6 +26,10 @@ pydoc:
 	pydoc -w udapi.core.node.Run
 
 	mv udapi.core.node.*.html $(OUTDIR)/doc/python
+
+javadoc:
+	mkdir -p $(OUTDIR)/doc/java
+	javadoc -d $(OUTDIR)/doc/java -sourcepath $(JAVADIR)/src/main/java -subpackages cz
 
 tgz:
 	tar -czf $(OUTDIR).tgz $(OUTDIR)
