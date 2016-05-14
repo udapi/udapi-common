@@ -59,8 +59,7 @@
 <tr>
   <td> &bull; load a document from a file <span style="color:red">DIFF</span></td>
   <td>  $doc->load_conllu('test.conllu') </td>
-  <td>  doc.load({'filename':'test.conllu'}) <br/>
-  doc.load({'filehandle': fh}) </td>
+  <td>  doc.load_conllu('test.conllu')  </td>
   <td>  doc = new CoNLLUReader("test.conllu").readDocument(); </td>
 </tr>
 
@@ -68,9 +67,7 @@
 <tr>
   <td> &bull; save a document to a file <span style="color:red">DIFF</span></td>
   <td>  $doc->save_conllu('test.conllu') </td>
-  <td>  doc.store({'filename':'test.conllu'})<br/>
-  doc.store({'filehandle': fh})
-  </td>
+  <td>  doc.store_conllu('test.conllu')   </td>
   <td>  CoNLLUWriter coNLLUWriter = new CoNLLUWriter();<br/>
     coNLLUWriter.writeDocument(doc, Paths.get("test.conllu"));
   </td>
