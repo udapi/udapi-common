@@ -146,9 +146,9 @@
 </tr>
 
 <tr>
-  <td> &bull; add an existing tree to the bundle <span style="color:red">DIFF</span></td>
+  <td> &bull; add an existing tree to the bundle </td>
   <td>  $bun->add_tree($root) </td>
-  <td>  bun.trees.append(root)  </td>
+  <td>  bun.add_tree(root)  </td>
   <td>  bun.addTree(root); </td>
 </tr>
 
@@ -162,14 +162,14 @@
 <tr>
   <td> &bull; get id of the bundle (any string)</td>
   <td>  my $id = $bun->id </td>
-  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  id = bun.id </td>
   <td>  bun.getId(); </td>
 </tr>
 
 <tr>
-  <td> &bull; get 1-based index of the bundle within document <span style="color:red">DIFF</span></td>
+  <td> &bull; get 1-based index of the bundle within document </td>
   <td>  my $index = $bun->number </td>
-  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  index = bun.number </td>
   <td>  int index = bun.getNumber() </td>
 </tr>
 
@@ -276,14 +276,14 @@
 <tr>
   <td> &bull; shift (=reorder) a node (with its whole subtree) after a target node</td>
   <td>  $node->shift_after_node($target) </td>
-  <td>  node.shift(target, after=1, move_subtree=1, reference_subtree=0) <span style="color:red">DIFF</span> </td>
+  <td>  node.shift_after_node(target) </td>
   <td>  node.shiftAfterNode(target); </td>
 </tr>
 
 <tr>
   <td> &bull; shift a node without its subtree before a target node's subtree</td>
   <td>  $node->shift_before_subtree($target, {without_children=>1}) </td>
-  <td>  node.shift(target, after=0, move_subtree=0, reference_subtree=1) <span style="color:red">DIFF</span> </td>
+  <td>  node.shift_before_subtree(target,without_children=1) </td>
   <td>  node.shiftBeforeSubtree(target, EnumSet.of(Node.ShiftArg.WITHOUT_CHILDREN); </td>
 </tr>
 
@@ -346,14 +346,14 @@
 <tr>
   <td> &bull; get zone of the tree </td>
   <td>  my $zone = $root->zone </td>
-  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  zone = root.zone </td>
   <td>  String zone = root.getZone(); </td>
 </tr>
 
 <tr>
   <td> &bull; set zone of the tree </td>
   <td>  $root->set_zone($zone) </td>
-  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  root.set_zone(zone) </td>
   <td>  root.setZone(zone); </td>
 </tr>
 
