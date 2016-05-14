@@ -89,7 +89,7 @@
   <td> &bull; create a new bundle and append it to the end of the document </td>
   <td>  my $bun = $doc->create_bundle() </td>
   <td>  bun = doc.create_bundle() </td>
-  <td>  Bundle bun = doc.addBundle(); <span style="color:red">DIFF</span></td>
+  <td>  Bundle bun = doc.createBundle(); </td>
 </tr>
 
 <tr>
@@ -135,21 +135,21 @@
   <td> &bull; get the tree with a given zone </td>
   <td>  my $root = $bun->get_tree($zone) </td>
   <td>  root = bun.get_tree(zone) </td>
-  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  Optional&lt;Root&gt; root = bun.getTree(zone); </td>
 </tr>
 
 <tr>
   <td> &bull; create a new tree in the bundle </td>
   <td>  my $root = $bun->create_tree($zone) </td>
   <td>  root = bun.create_tree(zone) </td>
-  <td>  bun.addTree(); <span style="color:red">DIFF</span></td>
+  <td>  bun.createTree(); </td>
 </tr>
 
 <tr>
   <td> &bull; add an existing tree to the bundle <span style="color:red">DIFF</span></td>
   <td>  $bun->add_tree($root) </td>
   <td>  bun.trees.append(root)  </td>
-  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  bun.addTree(root); </td>
 </tr>
 
 <tr>
@@ -163,21 +163,21 @@
   <td> &bull; get id of the bundle (any string)</td>
   <td>  my $id = $bun->id </td>
   <td>  <span style="color:red">MISSING</span> </td>
-  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  bun.getId(); </td>
 </tr>
 
 <tr>
   <td> &bull; get 1-based index of the bundle within document <span style="color:red">DIFF</span></td>
   <td>  my $index = $bun->number </td>
   <td>  <span style="color:red">MISSING</span> </td>
-  <td>  int index = bun.getId() </td>
+  <td>  int index = bun.getNumber() </td>
 </tr>
 
 <tr>
   <td> &bull; remove (=delete) a bundle </td>
   <td>  $bundle->remove() </td>
   <td>  bundle.remove() </td>
-  <td>  <span style="color:red">???</span> </td>
+  <td>  bundle.remove(); </td>
 </tr>
 
 
@@ -263,14 +263,14 @@
   <td> &bull; get left (=preceding) descendants including the node itself </td>
   <td>  my @nodes = $node->descendants({left_only=>1, add_self=>1}) </td>
   <td>  <span style="color:red">MISSING</span> </td>
-  <td>  List&lt;Node&gt; nodes = node.getDescendants(EnumSet.of(Node.DescendantsArg.ADD_SELF, <span style="color:red">Node.DescendantsArg.LEFT_ONLY</span>)); </td>
+  <td>  List&lt;Node&gt; nodes = node.getDescendants(EnumSet.of(Node.DescendantsArg.ADD_SELF, Node.DescendantsArg.LEFT_ONLY)); </td>
 </tr>
 
 <tr>
   <td> &bull; get the last child or the node itself </td>
   <td>  my $node = $node->children({last_only=>1, add_self=>1}) </td>
   <td>  <span style="color:red">MISSING</span> </td>
-  <td>  List&lt;Node&gt; node<span style="color:red">s</span> = node.getChildren(EnumSet.of(Node.ChildrenArg.ADD_SELF, Node.ChildrenArg.LAST_ONLY)); </td>
+  <td>  List&lt;Node&gt; nodes = node.getChildren(EnumSet.of(Node.ChildrenArg.ADD_SELF, Node.ChildrenArg.LAST_ONLY)); </td>
 </tr>
 
 <tr>
@@ -298,14 +298,14 @@
   <td> &bull; get full id of the node (root_address # node_id)</td>
   <td>  my $address = $node->address </td>
   <td>  <span style="color:red">MISSING</span> </td>
-  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  node.getAddress(); </td>
 </tr>
 
 <tr>
   <td> other methods</td>
   <td>  zone, bundle, root, document, is_root, next_node, prev_node, precedes($another_node), get_attrs(@names) </td>
   <td>  </td>
-  <td>  </td>
+  <td>  getZone(), getBundle(), getRoot(), getDocument(), isRoot(), getNextNode(), getPrevNode(), precedes(anotherNode)</td>
 </tr>
 
 <!--************* ROOT *************-->
@@ -347,28 +347,28 @@
   <td> &bull; get zone of the tree </td>
   <td>  my $zone = $root->zone </td>
   <td>  <span style="color:red">MISSING</span> </td>
-  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  String zone = root.getZone(); </td>
 </tr>
 
 <tr>
   <td> &bull; set zone of the tree </td>
   <td>  $root->set_zone($zone) </td>
   <td>  <span style="color:red">MISSING</span> </td>
-  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  root.setZone(zone); </td>
 </tr>
 
 <tr>
   <td> &bull; copy tree </td>
   <td> my $new_root = $root->copy_tree() </td>
   <td> <span style="color:red">MISSING</span> </td>
-  <td> <span style="color:red">MISSING</span> </td>
+  <td> Root newRoot = root.copyTree(); </td>
 </tr>
 
 <tr>
   <td> all methods of Node </td>
   <td>  # yes, except shift_* methods</td>
   <td>  <span style="color:red">???</span> </td>
-  <td>  <span style="color:red">???</span> </td>
+  <td>  Root is composite, root.getNode() implements all the methods of the Node</td>
 </tr>
 
 
@@ -442,7 +442,7 @@
   <td> Util::Eval </td>
   <td> cat in.conllu | udapi.pl Read::CoNLLU Util::Eval node='say $.lemma'</td>
   <td> <span style="color:red">MISSING</span> </td>
-  <td> <span style="color:red">???</span> </td>
+  <td> cat in.conllu | udapi.groovy Read::CoNLLU Util::Eval node='println c.lemma' </td>
 </tr>
 
 
