@@ -8,7 +8,7 @@ all: clone doc
 clone:
 	mkdir -p $(OUTDIR)
 
-	cp ../README.txt $(OUTDIR)
+	cp ../README.md $(OUTDIR)
 	cp ../LICENSE.txt $(OUTDIR)
 
 	git clone https://github.com/udapi/udapi-perl.git $(OUTDIR)/udapi-perl
