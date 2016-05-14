@@ -297,7 +297,7 @@
 <tr>
   <td> &bull; get full id of the node (root_address # node_id)</td>
   <td>  my $address = $node->address </td>
-  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  address = node.address() </td>
   <td>  node.getAddress(); </td>
 </tr>
 
@@ -339,7 +339,7 @@
 <tr>
   <td> &bull; get sentence string (if stored) </td>
   <td>  my $sen = $root->sentence </td>
-  <td>  <span style="color:red">MISSING</span>  </td>
+  <td>  sen = root.sentence  </td>
   <td>  String sen = root.getSentence(); </td>
 </tr>
 
@@ -367,7 +367,7 @@
 <tr>
   <td> &bull; get full id of the root ("bundle_id/zone" or "bundle_id" if zone is empty)</td>
   <td>  my $address = $root->address </td>
-  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  address = root.address() </td>
   <td>  root.getAddress(); </td>
 </tr>
 
@@ -379,16 +379,16 @@
 </tr>
 
 <tr>
-  <td> &bull; access root's lemma (or form, upos, xpos, feats, deprel, deps) <span style="color:red">DIFF</span></td>
-  <td>  my $lemma = $root->lemma; # returns a placeholder '<ROOT>' </td>
-  <td>  <span style="color:red">???</span> </td>
+  <td> &bull; access root's lemma (or form, upos, xpos, feats, deprel, deps)</td>
+  <td>  my $lemma = $root->lemma; # returns a placeholder '&lt;ROOT&gt;' </td>
+  <td>  lemma = root.lemma </td>
   <td>  <span style="color:red">???</span> </td>
 </tr>
 
 <tr>
   <td> all (other) methods of Node </td>
   <td>  # yes, except shift_* methods</td>
-  <td>  <span style="color:red">???</span> </td>
+  <td>  # yes </td>
   <td>  Root is composite, root.getNode() implements all the methods of the Node</td>
 </tr>
 
