@@ -1,7 +1,7 @@
 VERSION = 0.1.3
 
 OUTDIR = Udapi-$(VERSION)
-JAVADIR = udapi-java
+JAVADIR = $(OUTDIR)/udapi-java
 
 all: clone doc
 
@@ -24,12 +24,12 @@ doc:    perldoc pydoc javadoc
 
 pydoc:
 	mkdir -p $(OUTDIR)/doc/python
-	pydoc -w udapi.core.node.Node
-	pydoc -w udapi.core.node.Root
-	pydoc -w udapi.core.node.Bundle
-	pydoc -w udapi.core.node.Document
-	pydoc -w udapi.core.node.Block
-	pydoc -w udapi.core.node.Run
+	export PYTHONPATH=$(OUTDIR)/udapi-python:$PYTHONPATH && pydoc -w udapi.core.node.Node
+	export PYTHONPATH=$(OUTDIR)/udapi-python:$PYTHONPATH &&	pydoc -w udapi.core.node.Root
+	export PYTHONPATH=$(OUTDIR)/udapi-python:$PYTHONPATH &&	pydoc -w udapi.core.node.Bundle
+	export PYTHONPATH=$(OUTDIR)/udapi-python:$PYTHONPATH &&pydoc -w udapi.core.node.Document
+	export PYTHONPATH=$(OUTDIR)/udapi-python:$PYTHONPATH && pydoc -w udapi.core.node.Block
+	export PYTHONPATH=$(OUTDIR)/udapi-python:$PYTHONPATH && pydoc -w udapi.core.node.Run
 
 	mv udapi.core.node.*.html $(OUTDIR)/doc/python
 
