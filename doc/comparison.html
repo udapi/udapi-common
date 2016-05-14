@@ -365,7 +365,14 @@
 </tr>
 
 <tr>
-  <td> all methods of Node </td>
+  <td> &bull; get full id of the root ("bundle_id/zone" or "bundle_id" if zone is empty)</td>
+  <td>  my $address = $root->address </td>
+  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  root.getAddress(); </td>
+</tr>
+
+<tr>
+  <td> all (other) methods of Node </td>
   <td>  # yes, except shift_* methods</td>
   <td>  <span style="color:red">???</span> </td>
   <td>  Root is composite, root.getNode() implements all the methods of the Node</td>
