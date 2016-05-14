@@ -57,7 +57,7 @@
 </tr>
 
 <tr>
-  <td> &bull; load a document from a file DIFF</td>
+  <td> &bull; load a document from a file <span style="color:red">DIFF</span></td>
   <td>  $doc->load_conllu('test.conllu') </td>
   <td>  doc.load({'filename':'test.conllu'}) <br/>
   doc.load({'filehandle': fh}) </td>
@@ -66,7 +66,7 @@
 
 
 <tr>
-  <td> &bull; save a document to a file DIFF</td>
+  <td> &bull; save a document to a file <span style="color:red">DIFF</span></td>
   <td>  $doc->save_conllu('test.conllu') </td>
   <td>  doc.store({'filename':'test.conllu'})<br/>
   doc.store({'filehandle': fh})
@@ -89,7 +89,7 @@
   <td> &bull; create a new bundle and append it to the end of the document </td>
   <td>  my $bun = $doc->create_bundle() </td>
   <td>  bun = doc.create_bundle() </td>
-  <td>  Bundle bun = doc.addBundle(); DIFF</td>
+  <td>  Bundle bun = doc.addBundle(); <span style="color:red">DIFF</span></td>
 </tr>
 
 <tr>
@@ -142,11 +142,11 @@
   <td> &bull; create a new tree in the bundle </td>
   <td>  my $root = $bun->create_tree($zone) </td>
   <td>  <span style="color:red">MISSING</span> </td>
-  <td>  bun.addTree(); DIFF</td>
+  <td>  bun.addTree(); <span style="color:red">DIFF</span></td>
 </tr>
 
 <tr>
-  <td> &bull; add an existing tree to the bundle DIFF</td>
+  <td> &bull; add an existing tree to the bundle <span style="color:red">DIFF</span></td>
   <td>  $bun->add_tree($root) </td>
   <td>  bun.trees.append(root)  </td>
   <td>  <span style="color:red">MISSING</span> </td>
@@ -167,11 +167,19 @@
 </tr>
 
 <tr>
-  <td> &bull; get 1-based index of the bundle within document DIFF</td>
+  <td> &bull; get 1-based index of the bundle within document <span style="color:red">DIFF</span></td>
   <td>  my $index = $bun->number </td>
   <td>  <span style="color:red">MISSING</span> </td>
   <td>  int index = bun.getId() </td>
 </tr>
+
+<tr>
+  <td> &bull; remove (=delete) a bundle </td>
+  <td>  $bundle->remove() </td>
+  <td>  <span style="color:red">???</span> </td>
+  <td>  <span style="color:red">???</span> </td>
+</tr>
+
 
 <!--************* NODE *************-->
 
@@ -268,14 +276,14 @@
 <tr>
   <td> &bull; shift (=reorder) a node (with its whole subtree) after a target node</td>
   <td>  $node->shift_after_node($target) </td>
-  <td>  node.shift(target, after=1, move_subtree=1, reference_subtree=0) DIFF </td>
+  <td>  node.shift(target, after=1, move_subtree=1, reference_subtree=0) <span style="color:red">DIFF</span> </td>
   <td>  node.shiftAfterNode(target); </td>
 </tr>
 
 <tr>
   <td> &bull; shift a node without its subtree before a target node's subtree</td>
   <td>  $node->shift_before_subtree($target, {without_children=>1}) </td>
-  <td>  node.shift(target, after=0, move_subtree=0, reference_subtree=1) DIFF </td>
+  <td>  node.shift(target, after=0, move_subtree=0, reference_subtree=1) <span style="color:red">DIFF</span> </td>
   <td>  node.shiftBeforeSubtree(target, EnumSet.of(Node.ShiftArg.WITHOUT_CHILDREN); </td>
 </tr>
 
