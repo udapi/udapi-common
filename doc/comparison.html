@@ -372,6 +372,20 @@
 </tr>
 
 <tr>
+  <td> &bull; create a node (as the last node in the whole tree) </td>
+  <td>  my $child = $root->create_child() </td>
+  <td>  child = root.create_child()  </td>
+  <td>  Node child = root.getNode().createChild(); <span style="color:red">DIFF</span> </td>
+</tr>
+
+<tr>
+  <td> &bull; access root's lemma (or form, upos, xpos, feats, deprel, deps) <span style="color:red">DIFF</span></td>
+  <td>  my $lemma = $root->lemma; # returns a placeholder '<ROOT>' </td>
+  <td>  <span style="color:red">???</span> </td>
+  <td>  <span style="color:red">???</span> </td>
+</tr>
+
+<tr>
   <td> all (other) methods of Node </td>
   <td>  # yes, except shift_* methods</td>
   <td>  <span style="color:red">???</span> </td>
