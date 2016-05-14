@@ -368,21 +368,21 @@
   <td> &bull; create a node (as the last node in the whole tree) </td>
   <td>  my $child = $root->create_child() </td>
   <td>  child = root.create_child()  </td>
-  <td>  Node child = root.getNode().createChild(); <span style="color:red">DIFF</span> </td>
+  <td>  Node child = root.getNode().createChild(); </td>
 </tr>
 
 <tr>
   <td> &bull; access root's lemma (or form, upos, xpos, feats, deprel, deps), should return a placeholder '&lt;ROOT&gt;' </td>
   <td>  my $lemma = $root->lemma </td>
   <td>  lemma = root.lemma </td>
-  <td>  <span style="color:red">???</span> </td>
+  <td>  String lemma = root.getLemma(); </td>
 </tr>
 
 <tr>
   <td> &bull; calling shift_* methods on root (e.g. shift_after_node) results in </td>
   <td>  exception "Cannot call shift_* methods on root"</td>
   <td>  <span style="color:red">???</span> </td>
-  <td>  <span style="color:red">???</span> </td>
+  <td>  Shift methods can be called on root.getNod() </td>
 </tr>
 
 <tr>
