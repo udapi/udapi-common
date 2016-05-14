@@ -13,10 +13,10 @@
 <body>
 
 <table  border="1" cellspacing="0" cellpadding="5">
-<col width="25%">
-<col width="25%">
-<col width="25%">
-<col width="25%">
+<col width="25%"/>
+<col width="25%"/>
+<col width="25%"/>
+<col width="25%"/>
 
 
 <!--************* DATA CLASSES *************-->
@@ -36,7 +36,7 @@
 <!--************* DOCUMENT *************-->
 
 <tr>
-  <td colspan=4 bgcolor='lightgreen'> DOCUMENT </td>
+  <td colspan='4' bgcolor='lightgreen'> DOCUMENT </td>
 </tr>
 
 
@@ -104,7 +104,7 @@
 <!--************* BUNDLE *************-->
 
 <tr>
-  <td colspan=4 bgcolor='lightgreen'> BUNDLE </td>
+  <td colspan='4' bgcolor='lightgreen'> BUNDLE </td>
 </tr>
 
 <tr>
@@ -134,14 +134,14 @@
 <tr>
   <td> &bull; get the tree with a given zone </td>
   <td>  my $root = $bun->get_tree($zone) </td>
-  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  root = bun.get_tree(zone) </td>
   <td>  <span style="color:red">MISSING</span> </td>
 </tr>
 
 <tr>
   <td> &bull; create a new tree in the bundle </td>
   <td>  my $root = $bun->create_tree($zone) </td>
-  <td>  <span style="color:red">MISSING</span> </td>
+  <td>  root = bun.create_tree(zone) </td>
   <td>  bun.addTree(); <span style="color:red">DIFF</span></td>
 </tr>
 
@@ -176,7 +176,7 @@
 <tr>
   <td> &bull; remove (=delete) a bundle </td>
   <td>  $bundle->remove() </td>
-  <td>  <span style="color:red">???</span> </td>
+  <td>  bundle.remove() </td>
   <td>  <span style="color:red">???</span> </td>
 </tr>
 
@@ -184,7 +184,7 @@
 <!--************* NODE *************-->
 
 <tr>
-  <td colspan=4 bgcolor='lightgreen'> NODE </td>
+  <td colspan='4' bgcolor='lightgreen'> NODE </td>
 </tr>
 
 <tr>
@@ -234,7 +234,7 @@
 <tr>
   <td> &bull; create a node (as the last node in the whole tree) </td>
   <td>  my $child = $node->create_child() </td>
-  <td>  <span style="color:red">MISSING</span>  </td>
+  <td>  child = node.create_child()  </td>
   <td>  Node child = node.createChild(); </td>
 </tr>
 
@@ -311,7 +311,7 @@
 <!--************* ROOT *************-->
 
 <tr>
-  <td colspan=4 bgcolor='lightgreen'> ROOT </td>
+  <td colspan='4' bgcolor='lightgreen'> ROOT </td>
 </tr>
 
 <tr>
