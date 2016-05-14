@@ -358,6 +358,13 @@
 </tr>
 
 <tr>
+  <td> &bull; copy tree </td>
+  <td> my $new_root = $root->copy_tree() </td>
+  <td> <span style="color:red">MISSING</span> </td>
+  <td> <span style="color:red">MISSING</span> </td>
+</tr>
+
+<tr>
   <td> all methods of Node </td>
   <td>  # yes, except shift_* methods</td>
   <td>  <span style="color:red">???</span> </td>
@@ -391,6 +398,20 @@
   <td>  use Udapi::Block::Dummy; </td>
   <td>  import Dummy from udapi.block.dummy  </td>
   <td>  import cz.ufal.udapi.block.Dummy; </td>
+</tr>
+
+<tr>
+  <td> block methods </td>
+  <td>  process_(document|bundle|tree|node|start|end) _should_process_(bundle|tree) </td>
+  <td>  process_(document|bundle|tree|node|start|end) </td>
+  <td>  process(Document|Bundle|Tree|Node|Start|End) (before|after)Process(Bundle|Tree|Document)</td>
+</tr>
+
+<tr>
+  <td> block parameters </td>
+  <td>  zones </td>
+  <td>   </td>
+  <td>   </td>
 </tr>
 
 
