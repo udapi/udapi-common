@@ -40,8 +40,14 @@ javadoc:
 
 perldoc:
 	mkdir -p $(OUTDIR)/doc/perl
+perldoc:
+	# cpanm Pod::Simple::HTMLBatch
+	rm -rf $(OUTDIR)/doc/perl
+	mkdir -p $(OUTDIR)/doc/perl
 	# cpanm Pod::ProjectDocs
-	pod2projdocs -o $(OUTDIR)/doc/perl -l $(PERLDIR)/lib/
+	# pod2projdocs -o $(OUTDIR)/doc/perl -l $(PERLDIR)/lib/
+	cp udapipod.css $(OUTDIR)/doc/perl/
+	perl -MPod::Simple::HTMLBatch -e 'my $$b=Pod::Simple::HTMLBatch->new();$$b->add_css("udapipod.css");$$b->batch_convert(@ARGV);' $(PERLDIR)/lib/ $(OUTDIR)/doc/perl
 
 tgz:
 	tar -czf $(OUTDIR).tgz $(OUTDIR)
