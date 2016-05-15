@@ -5,7 +5,11 @@ Udapi - Application Programming Interface for Universal Dependencies
 # DESCRIPTION
 
 Udapi is a collection of three APIs for processing Universal Dependencies data.
-The three mutations are implemented in Perl, Java, and Python respectively.
+The three mutations are developed in Perl, Java, and Python respectively.
+The APIs are based on the same object-oriented conceptual model, and are
+harmonized as much the differences between these programming languages allow.
+
+See http://udapi.github.io/ for more information on Udapi.
 
 # AUTHOR
 
