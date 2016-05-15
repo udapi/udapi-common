@@ -2,6 +2,7 @@ VERSION = 0.1.3
 
 OUTDIR = Udapi-$(VERSION)
 JAVADIR = $(OUTDIR)/udapi-java
+PERLDIR = $(OUTDIR)/udapi-perl
 
 all: clone doc
 
@@ -38,7 +39,9 @@ javadoc:
 	javadoc -d $(OUTDIR)/doc/java -sourcepath $(JAVADIR)/src/main/java -subpackages cz -encoding utf8
 
 perldoc:
-	# TODO
+	mkdir -p $(OUTDIR)/doc/perl
+	# cpanm Pod::ProjectDocs
+	pod2projdocs -o $(OUTDIR)/doc/perl -l $(PERLDIR)/lib/
 
 tgz:
 	tar -czf $(OUTDIR).tgz $(OUTDIR)
