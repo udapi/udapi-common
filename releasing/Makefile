@@ -25,23 +25,22 @@ doc:    perldoc pydoc javadoc
 
 pydoc:
 	mkdir -p $(OUTDIR)/doc/python
-	export PYTHONPATH=$(OUTDIR)/udapi-python:$PYTHONPATH && pydoc -w udapi.core.node.Node
-	export PYTHONPATH=$(OUTDIR)/udapi-python:$PYTHONPATH &&	pydoc -w udapi.core.node.Root
-	export PYTHONPATH=$(OUTDIR)/udapi-python:$PYTHONPATH &&	pydoc -w udapi.core.node.Bundle
-	export PYTHONPATH=$(OUTDIR)/udapi-python:$PYTHONPATH &&pydoc -w udapi.core.node.Document
-	export PYTHONPATH=$(OUTDIR)/udapi-python:$PYTHONPATH && pydoc -w udapi.core.node.Block
-	export PYTHONPATH=$(OUTDIR)/udapi-python:$PYTHONPATH && pydoc -w udapi.core.node.Run
+	export PYTHONPATH=$(OUTDIR)/udapi-python:$(PYTHONPATH) && pydoc -w udapi.core.node.Node
+	export PYTHONPATH=$(OUTDIR)/udapi-python:$(PYTHONPATH) && pydoc -w udapi.core.root.Root
+	export PYTHONPATH=$(OUTDIR)/udapi-python:$(PYTHONPATH) && pydoc -w udapi.core.bundle.Bundle
+	export PYTHONPATH=$(OUTDIR)/udapi-python:$(PYTHONPATH) && pydoc -w udapi.core.document.Document
+	export PYTHONPATH=$(OUTDIR)/udapi-python:$(PYTHONPATH) && pydoc -w udapi.core.block.Block
+	export PYTHONPATH=$(OUTDIR)/udapi-python:$(PYTHONPATH) && pydoc -w udapi.core.run.Run
 
-	mv udapi.core.node.*.html $(OUTDIR)/doc/python
+	mv udapi.core.*.html $(OUTDIR)/doc/python
 
 javadoc:
 	mkdir -p $(OUTDIR)/doc/java
 	javadoc -d $(OUTDIR)/doc/java -sourcepath $(JAVADIR)/src/main/java -subpackages cz -encoding utf8
 
 perldoc:
-	mkdir -p $(OUTDIR)/doc/perl
-perldoc:
 	# cpanm Pod::Simple::HTMLBatch
+	mkdir -p $(OUTDIR)/doc/perl
 	rm -rf $(OUTDIR)/doc/perl
 	mkdir -p $(OUTDIR)/doc/perl
 	# cpanm Pod::ProjectDocs

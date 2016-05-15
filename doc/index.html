@@ -1,0 +1,143 @@
+<html>
+<head>
+<title>Udapi - Application Programming Interface for Universal Dependencies</title>
+</head>
+
+<body>
+
+<h1>Udapi version 0.1.3</h1>
+
+<h2>Introduction</h2>
+
+<p>
+Udapi is a collection of three APIs for processing Universal Dependencies data.
+The three mutations are developed in Perl, Java, and Python respectively.
+The APIs are based on the same object-oriented conceptual model, and are
+harmonized as much the differences between these programming languages allow.
+</p>
+
+<p>
+All mutations of Udapi are provided with similar command line tools (udapi.pl, udapy, udapi.groovy) that allow
+quick and comfortable application of Udapi processing units on CoNLL-U files.
+<p>
+
+<p>
+The development of Udapi is hosted at GitHub. Anyone is very welcome to contribute.
+For more information on Udapi, please see <a href="http://udapi.github.io/">http://udapi.github.io/</a>.
+</p>
+
+
+<h2>Conceptual model</h2>
+In all three languages, the core of the model consists of the following main classes.
+<ul>
+  <li> <b>Classes for data representation</b>
+    <ul>
+
+      <li> <b>Document. </b>  A document consists of a sequence of bundles,
+            mirroring a sequence of sentences in a typical natural language text.
+            A document instance can be composed programatically or can be loaded from (or stored to) a CoNLL-U formatted file.
+      </li>
+
+      <li> <b>Bundle.</b> - A bundle corresponds to a sentence, possibly in more forms or with different representations,
+       such as sentence-tuples from a parallel corpora, or a same single sentence with which more trees are associated
+       (e.g. parses produced by different dependency parsers). The bundle level is unimportant for those who work only with
+	the basic Universal Dependencies treebank collection, as it contains no parallel data and no multiple trees.
+	If there are more trees in a bundle, then they must be distinguished by a so called zone.
+      </li>
+
+      <li> <b>Root.</b> A root is a special (artificial) node that is added to the top of a CoNLL-U tree in the Udapi model.
+          The root serves as a representant of the whole tree (e.g. it bears the sentence's identifier).
+          The root's functionality partially overlaps with functionality
+          of nodes (e.g., a root has its children), but differs in other aspects (its lemma cannot be set, its linear position
+          cannot be changed too, etc.).
+      </li>
+
+      <li> <b>Node.</b> A node in the Udapi model corresponds to a node of a dependency tree in the CoNLL-U format. 
+        It has all a CoNLL-U-defined attributes and a bunch of methods for tree traversal and for tree manipulation
+        (both dependencies and linear ordering can be changed).</li>
+      <li>   </li>
+      <li>   </li>
+
+    </ul>
+  </li>
+ 
+  <li> <b>Classes for data processing</b>
+   <ul>
+    <li> <b>Block.</b> A block is the smallest processing unit that can be applid on UD data.
+            Block classes implement usually some reasonably limited and
+            well defined task, often corresponding to the classical NLP components (tokenization, tagging, parsing...), 
+            but there can be blocks for purely technical tasks (such as for feature extraction or for collecting statistical counts).
+    </li>
+
+    <li> <b>Run.</b> A run corresponds typically to a sequence of blocks (also called scenario) that are to be applied on data one after another.
+            Such scenarios can compose very complex NLP pipelines.
+    </li>
+   </ul>
+
+  </li>
+ 
+</ul>
+
+<h2>Classes</h2>
+
+The following table provides links to reference documentation of the individual classes.
+A more detailed comparison of methods of the three APIs can be found <a href="comparison.html">here</a>.
+
+<table border="1">
+<tr> 
+  <td>Udapi class</td>
+  <td>Perl</td>
+  <td>Python</td>
+  <td>Java</td>
+<tr> 
+
+<tr> 
+  <td>Document</td>
+  <td>---</td>
+  <td><a href='python/udapi.core.document.Document.html'>see doc</a></td>
+  <td><a href='java/cz/ufal/udapi/core/Document.html'>see doc</a>  </td>
+<tr> 
+
+<tr> 
+  <td>Bundle</td>
+  <td>---</td>
+  <td><a href='python/udapi.core.bundle.Bundle.html'>see doc</a></td>
+  <td><a href='java/cz/ufal/udapi/core/Bundle.html'>see doc</a>  </td>
+<tr> 
+
+<tr> 
+  <td>Root</td>
+  <td>---</td>
+  <td><a href='python/udapi.core.root.Root.html'>see doc</a></td>
+  <td><a href='java/cz/ufal/udapi/core/Root.html'>see doc</a>  </td>
+<tr> 
+
+<tr> 
+  <td>Node</td>
+  <td><a href='perl/Udapi/Core/Node.html'>see doc</a></td>
+  <td><a href='python/udapi.core.node.Node.html'>see doc</a></td>
+  <td><a href='java/cz/ufal/udapi/core/Node.html'>see doc</a>  </td>
+<tr> 
+
+<tr> 
+  <td>Block</td>
+  <td>---</td>
+  <td><a href='python/udapi.core.block.Block.html'>see doc</a></td>
+  <td><a href='java/cz/ufal/udapi/core/Block.html'>see doc</a>  </td>
+<tr> 
+
+<tr> 
+  <td>Run</td>
+  <td>---</td>
+  <td><a href='python/udapi.core.run.Run.html'>see doc</a></td>
+  <td><a href='java/cz/ufal/udapi/core/Run.html'>see doc</a>  </td>
+<tr> 
+
+
+<table>
+
+
+
+
+</body>
+<html>
