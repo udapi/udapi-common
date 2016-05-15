@@ -12,6 +12,10 @@ clone:
 	cp ../README.md $(OUTDIR)
 	cp ../LICENSE.txt $(OUTDIR)
 
+	mkdir -p $(OUTDIR)/doc
+	cp ../doc/index.html $(OUTDIR)/doc
+	cp ../doc/comparison.html $(OUTDIR)/doc
+
 	git clone https://github.com/udapi/udapi-perl.git $(OUTDIR)/udapi-perl
 	rm -rf $(OUTDIR)/udapi-perl/.git*
 

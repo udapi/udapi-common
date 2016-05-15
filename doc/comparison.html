@@ -57,7 +57,7 @@
 </tr>
 
 <tr>
-  <td> &bull; load a document from a file <span style="color:red">DIFF</span></td>
+  <td> &bull; load a document from a file <!-- <span style="color:red">DIFF</span> --> </td>
   <td>  $doc->load_conllu('test.conllu') </td>
   <td>  doc.load_conllu('test.conllu')  </td>
   <td>  doc = new CoNLLUReader("test.conllu").readDocument(); </td>
@@ -65,7 +65,7 @@
 
 
 <tr>
-  <td> &bull; save a document to a file <span style="color:red">DIFF</span></td>
+  <td> &bull; save a document to a file <!-- <span style="color:red">DIFF</span> --> </td>
   <td>  $doc->save_conllu('test.conllu') </td>
   <td>  doc.store_conllu('test.conllu')   </td>
   <td>  CoNLLUWriter coNLLUWriter = new CoNLLUWriter();<br/>
@@ -259,7 +259,7 @@
 <tr>
   <td> &bull; get the last child or the node itself </td>
   <td>  my $node = $node->children({last_only=>1, add_self=>1}) </td>
-  <td>  <span style="color:red">MISSING</span> </td>
+  <td> <!-- <span style="color:red">MISSING</span> --> </td>
   <td>  List&lt;Node&gt; nodes = node.getChildren(EnumSet.of(Node.ChildrenArg.ADD_SELF, Node.ChildrenArg.LAST_ONLY)); </td>
 </tr>
 
@@ -350,7 +350,7 @@
 <tr>
   <td> &bull; copy tree </td>
   <td> my $new_root = $root->copy_tree() </td>
-  <td> <span style="color:red">MISSING</span> </td>
+  <td> <!-- <span style="color:red">MISSING</span> --> </td>
   <td> Root newRoot = root.copyTree(); </td>
 </tr>
 
@@ -378,7 +378,7 @@
 <tr>
   <td> &bull; calling shift_* methods on root (e.g. shift_after_node) results in </td>
   <td>  exception "Cannot call shift_* methods on root"</td>
-  <td>  <span style="color:red">???</span> </td>
+  <td>  <!-- <span style="color:red">???</span> --> </td>
   <td>  Shift methods can be called on root.getNod() </td>
 </tr>
 
@@ -459,7 +459,7 @@
 <tr>
   <td> Util::Eval </td>
   <td> cat in.conllu | udapi.pl Read::CoNLLU Util::Eval node='say $.lemma'</td>
-  <td> <span style="color:red">MISSING</span> </td>
+  <td> <!-- <span style="color:red">MISSING</span> --> </td>
   <td> cat in.conllu | udapi.groovy Read::CoNLLU Util::Eval node='println c.lemma' </td>
 </tr>
 
