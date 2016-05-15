@@ -35,7 +35,7 @@ pydoc:
 
 javadoc:
 	mkdir -p $(OUTDIR)/doc/java
-	javadoc -d $(OUTDIR)/doc/java -sourcepath $(JAVADIR)/src/main/java -subpackages cz
+	javadoc -d $(OUTDIR)/doc/java -sourcepath $(JAVADIR)/src/main/java -subpackages cz -encoding utf8
 
 perldoc:
 	# TODO
